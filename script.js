@@ -31,13 +31,25 @@ let personalMovieDB = {
     genres: [],
     privat: false
 };
-
-let a = prompt('Один из последних просмотренных фильмов?', ''),
-    b = prompt('На сколько оцените его?',''),
-    c = prompt('Один из последних просмотренных фильмов?', ''),
-    d = prompt('На сколько оцените его?','');
-
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+for (let i = 0; i < 2; i++){
+    let a = prompt('Один из последних просмотренных фильмов?', '');
+    let b = prompt('На сколько оцените его?','');
+    if (b != null && a != null && a != '' && a.length < 50 && b != ''){
+        personalMovieDB.movies[a] = b;
+        console.log('мы записали ваш фильм');
+    } else{
+        console.log('неправильный формат ввода');
+        i--;
+    }
+}
+if (personalMovieDB.count < 10){
+    alert("Просмотрено довольно мало фильмов.");
+} else if(personalMovieDB.count > 10 && personalMovieDB.count < 30){
+    alert('Вы классический зритель)');
+} else if(personalMovieDB.count > 30){
+    alert('Вы киноман!!');
+} else{
+    alert('произошла ошибка:(');
+}
 
 console.log(personalMovieDB);
